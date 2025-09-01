@@ -70,16 +70,58 @@ export const Footer = () => {
             <div key={index} className="animate-fade-in-up" style={{animationDelay: `${index * 0.1}s`}}>
               <h3 className="font-semibold mb-4 text-foreground">{section.title}</h3>
               <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a 
-                      href={section.title === "Legal" && typeof link === 'object' ? link.href : "#"} 
-                      className="text-muted-foreground hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block"
-                    >
-                      {section.title === "Legal" && typeof link === 'object' ? link.text : link}
-                    </a>
-                  </li>
-                ))}
+                {section.links.map((link, linkIndex) => {
+                  const handleLinkClick = () => {
+                    if (section.title === "Solutions") {
+                      const element = document.getElementById('solutions');
+                      if (element) {
+                        const navHeight = 112;
+                        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                          top: elementTop - navHeight,
+                          behavior: 'smooth'
+                        });
+                      }
+                    } else if (section.title === "Services") {
+                      const element = document.getElementById('services');
+                      if (element) {
+                        const navHeight = 112;
+                        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                          top: elementTop - navHeight,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }
+                  };
+
+                  return (
+                    <li key={linkIndex}>
+                      {section.title === "Legal" && typeof link === 'object' ? (
+                        <a 
+                          href={link.href} 
+                          className="text-muted-foreground hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block"
+                        >
+                          {link.text}
+                        </a>
+                      ) : (section.title === "Solutions" || section.title === "Services") ? (
+                        <button
+                          onClick={handleLinkClick}
+                          className="text-muted-foreground hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block text-left"
+                        >
+                          {typeof link === 'string' ? link : link}
+                        </button>
+                      ) : (
+                        <a 
+                          href="#" 
+                          className="text-muted-foreground hover:text-primary transition-all duration-300 text-sm hover:translate-x-1 inline-block"
+                        >
+                          {typeof link === 'string' ? link : link}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

@@ -1,8 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Zap, Play } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Play, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Hero = () => {
+  // Function to scroll to an element with an offset
+  const scrollToSection = (id, offset = -100) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY + offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
@@ -15,15 +28,15 @@ export const Hero = () => {
       >
         <source src="/AIAgents_1756723459217.mp4" type="video/mp4" />
       </video>
-      
+
       {/* Video Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-800/70 to-blue-900/80 z-10" />
-      
+
       {/* Animated AI Particles */}
       <div className="absolute inset-0 z-20">
         <div className="ai-grid opacity-20"></div>
       </div>
-      
+
       {/* Neural Network Animation */}
       <div className="absolute inset-0 z-20 overflow-hidden">
         {[...Array(12)].map((_, i) => (
@@ -56,7 +69,7 @@ export const Hero = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
             <div className="mb-4">
@@ -65,49 +78,47 @@ export const Hero = () => {
               </span>
             </div>
           </h1>
-          
+
           {/* Subheadline */}
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-200 mb-6 leading-relaxed">
             Deploy Custom AI Agents to Automate Complex Workflows
           </h2>
-          
+
           {/* Supporting Tagline */}
           <h3 className="text-lg md:text-xl font-medium text-slate-300 mb-8">
             Generative AI Solutions & Services
           </h3>
-          
+
           {/* Description */}
           <div className="max-w-4xl mx-auto mb-12">
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
               Langlytics helps businesses automate complex workflows, accelerate decisions, and scale with AI. Our custom AI agents and enterprise services deliver measurable results from day one.
             </p>
           </div>
-          
+
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact">
-                <Button 
-                  size="lg" 
-                  className="relative group px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white border-0 shadow-2xl overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-teal-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                  <span className="relative flex items-center">
-                    🔹 Explore Solutions
-                  </span>
-                </Button>
-              </Link>
-              
+              <Button 
+                size="lg" 
+                className="group px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white border-0 shadow-xl overflow-hidden"
+                onClick={() => scrollToSection('solutions')}
+              >
+                <span className="relative flex items-center">
+                  🔹 Explore Solutions
+                </span>
+              </Button>
+
               <Button 
                 variant="outline" 
                 size="lg" 
                 className="group px-8 py-4 text-lg font-semibold bg-transparent backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 shadow-lg"
-                onClick={() => window.location.href = '/contact'}
+                onClick={() => scrollToSection('services')}
               >
                 🔹 Explore Services
               </Button>
             </div>
-            
+
             <Button 
               variant="ghost" 
               size="lg" 
@@ -118,7 +129,7 @@ export const Hero = () => {
               ▶️ Watch Demo
             </Button>
           </div>
-          
+
           {/* Services Bar Animation */}
           <div className="mb-16 overflow-hidden">
             <div className="relative">
@@ -138,7 +149,7 @@ export const Hero = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             {[

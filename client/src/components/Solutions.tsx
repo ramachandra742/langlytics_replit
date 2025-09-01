@@ -38,22 +38,22 @@ export const Solutions = () => {
   ];
 
   return (
-    <section id="solutions" className="py-24 relative">
+    <section id="solutions" className="py-16 relative">
       <div className="absolute inset-0 bg-gradient-glow opacity-10" />
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">AI Solutions</span> That Matter
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             We create AI-powered solutions that enhance human connection and productivity, 
             making advanced technology accessible to everyone.
           </p>
         </div>
 
         {/* Main Solutions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
           {solutions.map((solution, index) => (
             <Card 
               key={index} 

@@ -56,25 +56,25 @@ export const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-slate-900 dark:to-slate-800">
+    <section id="services" className="py-16 bg-gradient-to-br from-slate-50 to-blue-50/30 dark:from-slate-900 dark:to-slate-800">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Complete <span className="gradient-text">AI Services</span> to Transform Your Business
           </h2>
-          <p className="text-xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Beyond solutions, Langlytics provides expert services to help you integrate, optimize, and scale AI across your business. 
             Our team ensures you achieve measurable results from day one.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => (
             <Card 
               key={index}
-              className="card-hover p-8 bg-card/80 backdrop-blur-sm border border-border/50 overflow-hidden relative group"
+              className="card-hover p-6 bg-card/80 backdrop-blur-sm border border-border/50 overflow-hidden relative group"
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
               }}
@@ -124,7 +124,17 @@ export const Services = () => {
               variant="outline" 
               size="lg" 
               className="group px-8 py-4 text-lg font-semibold bg-transparent backdrop-blur-sm border-2 border-primary/30 hover:bg-primary/5 hover:border-primary/50"
-              onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const element = document.getElementById('solutions');
+                if (element) {
+                  const navHeight = 112;
+                  const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+                  window.scrollTo({
+                    top: elementTop - navHeight,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
             >
               <Brain className="mr-2 w-5 h-5" />
               Explore Solutions
@@ -133,19 +143,7 @@ export const Services = () => {
         </div>
       </div>
 
-      {/* CSS Animation */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      
     </section>
   );
 };

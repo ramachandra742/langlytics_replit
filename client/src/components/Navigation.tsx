@@ -21,7 +21,14 @@ export const Navigation = () => {
     if (href.startsWith('#')) {
       if (location.pathname === '/') {
         const element = document.querySelector(href);
-        element?.scrollIntoView({ behavior: 'smooth' });
+        if (element) {
+          const navHeight = 112; // h-28 = 7rem = 112px
+          const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementTop - navHeight,
+            behavior: 'smooth'
+          });
+        }
       } else {
         navigate('/' + href);
       }

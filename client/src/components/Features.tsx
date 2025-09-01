@@ -59,20 +59,20 @@ export const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-gradient-secondary">
+    <section id="features" className="py-16 bg-gradient-secondary">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
+        <div className="text-center mb-12">
+          <div className="flex justify-center mb-4">
             <Badge className="px-4 py-2 bg-primary/10 text-primary border-primary/20">
               <Sparkles className="w-4 h-4 mr-2" />
               Advanced Features
             </Badge>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Built for the <span className="gradient-text">Future</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Our AI solutions & Services come packed with cutting-edge features designed to provide
             the most advanced and user-friendly experience possible.
           </p>

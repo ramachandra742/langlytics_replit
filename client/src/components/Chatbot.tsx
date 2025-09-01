@@ -15,7 +15,7 @@ export const Chatbot = () => {
   ]);
   const [inputValue, setInputValue] = useState("");
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userMessage = {
@@ -24,41 +24,47 @@ export const Chatbot = () => {
       sender: "user"
     };
 
-    setMessages([...messages, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    const currentInput = inputValue;
     setInputValue("");
 
-    // Simple bot responses based on keywords
-    setTimeout(() => {
-      let botResponse = "Thank you for your message! Our team will get back to you soon.";
-      
-      const input = inputValue.toLowerCase();
-      if (input.includes("voice ai") || input.includes("companion")) {
-        botResponse = "Our Voice AI Companion is designed for elderly people, those living alone, and stroke survivors. It provides 24/7 companionship with natural voice interactions and emotional support.";
-      } else if (input.includes("chatmydocs") || input.includes("rag")) {
-        botResponse = "ChatMyDocs is our VoiceRAG solution that enables real-time conversations with AI about your documents. Upload any document and have natural conversations about its content!";
-      } else if (input.includes("custom") || input.includes("solutions")) {
-        botResponse = "We build end-to-end custom AI solutions tailored to your specific needs. From voice assistants to document processing, we can create the perfect AI solution for your business.";
-      } else if (input.includes("contact") || input.includes("demo")) {
-        botResponse = "You can contact us at hello@langlytics.ai or +91 8904604850. We're based in Bangalore, India. Would you like me to redirect you to our contact page?";
-      } else if (input.includes("price") || input.includes("cost")) {
-        botResponse = "Our pricing varies based on your specific requirements. Please contact our team for a customized quote. We offer flexible plans for businesses of all sizes.";
-      } else if (input.includes("support") || input.includes("help")) {
-        botResponse = "We provide 24/7 customer support with real human agents and AI chatbot assistance. You can reach us anytime for immediate help with any issues.";
-      }
+    try {
+      // Call the Gemini AI API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: currentInput,
+          conversationHistory: newMessages.slice(-6) // Send last 6 messages for context
+        }),
+      });
 
+      const data = await response.json();
+      
       const botMessage = {
-        id: messages.length + 2,
-        text: botResponse,
+        id: newMessages.length + 1,
+        text: data.response || "I'm having trouble responding right now. Please try again or contact our team at hello@langlytics.ai",
         sender: "bot"
       };
 
       setMessages(prev => [...prev, botMessage]);
-    }, 1000);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMessage = {
+        id: newMessages.length + 1,
+        text: "I'm experiencing technical difficulties. Please contact our team directly at hello@langlytics.ai or +91 8904604850.",
+        sender: "bot"
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = async (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      sendMessage();
+      await sendMessage();
     }
   };
 
@@ -144,7 +150,7 @@ export const Chatbot = () => {
                     className="flex-1 text-sm"
                   />
                   <Button
-                    onClick={sendMessage}
+                    onClick={() => sendMessage()}
                     size="icon"
                     className="w-8 h-8 shrink-0"
                   >
