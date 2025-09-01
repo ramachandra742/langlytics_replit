@@ -30,6 +30,7 @@ export const Navigation = () => {
 
   const navItems = [
     { name: "Solutions", href: "#solutions" },
+    { name: "Services", href: "#services" },
     { name: "Features", href: "#features" },
     { name: "About", href: "#about" },
     { name: "Blogs", href: "/blog", isRoute: true }

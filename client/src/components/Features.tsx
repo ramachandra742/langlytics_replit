@@ -68,26 +68,26 @@ export const Features = () => {
               Advanced Features
             </Badge>
           </div>
-          
+
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Built for the <span className="gradient-text">Future</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our AI solutions come packed with cutting-edge features designed to provide 
+            Our AI solutions & Services come packed with cutting-edge features designed to provide
             the most advanced and user-friendly experience possible.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {features.map((feature, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="card-hover p-8 bg-card/50 backdrop-blur-sm relative overflow-hidden group min-h-[280px] flex animate-fade-in-up"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Gradient Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
-              
+
               <div className="relative z-10 h-full flex flex-col">
                 <div className="flex items-center justify-between mb-4">
                   <div className={`p-3 rounded-lg bg-gradient-to-br ${feature.color} text-white shadow-lg`}>
@@ -97,11 +97,11 @@ export const Features = () => {
                     {feature.badge}
                   </Badge>
                 </div>
-                
+
                 <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
-                
+
                 <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                   {feature.description}
                 </p>

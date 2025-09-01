@@ -8,6 +8,10 @@ export const Footer = () => {
       links: ["ChatMyDocs", "RowSpeak", "Voice AI Companion"]
     },
     {
+      title: "Services",
+      links: ["AI Consulting", "Custom Development", "Integration", "Training & Support"]
+    },
+    {
       title: "Company",
       links: ["About Us", "Our Team", "Careers", "News & Updates"]
     },
@@ -29,7 +33,7 @@ export const Footer = () => {
   return (
     <footer className="bg-background/95 border-t border-primary/20 mt-16">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8 mb-8">
           {/* Brand Section */}
           <div className="lg:col-span-2 mb-8 lg:mb-0">
             <div className="mb-2">
@@ -85,7 +89,7 @@ export const Footer = () => {
         <div className="mt-12 pt-8 border-t border-primary/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 Langlytics. All rights reserved. | Bangalore, India
+              © 2025 Langlytics. All rights reserved. | Bangalore, India
             </p>
             
             <div className="flex items-center gap-6">
