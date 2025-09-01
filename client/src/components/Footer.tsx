@@ -27,16 +27,18 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background/95 border-t border-primary/20">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+    <footer className="bg-background/95 border-t border-primary/20 mt-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <img 
-              src={langlyticsLogo} 
-              alt="Langlytics" 
-              className="h-24 w-auto object-contain mb-4 brightness-110 contrast-110 hover:scale-105 transition-transform duration-300"
-            />
+          <div className="lg:col-span-2 mb-8 lg:mb-0">
+            <div className="mb-2">
+              <img 
+                src={langlyticsLogo} 
+                alt="Langlytics" 
+                className="h-24 w-auto object-contain brightness-110 contrast-110 hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Empowering human connection through advanced AI solutions. 
               Building the future of artificial intelligence, one conversation at a time.

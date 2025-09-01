@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-48">
       {/* Animated Background */}
       <div 
         className="absolute inset-0 z-0"
